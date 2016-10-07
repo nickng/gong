@@ -1,0 +1,18 @@
+name:                Gong
+version:             0.1.0.0
+synopsis:            Gong liveness and safety checker
+description:         Gong liveness and safety checker for MiGo types.
+license:             Apache-2.0
+license-file:        LICENSE
+author:              Julien Lange, Bernardo Toninho, Nicholas Ng, Nobuko Yoshida
+maintainer:          nickng@imperial.ac.uk
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+executable Gong
+  main-is:             Gong.hs
+  other-extensions:    MultiParamTypeClasses, TemplateHaskell, ScopedTypeVariables, FlexibleInstances, FlexibleContexts, UndecidableInstances, DeriveDataTypeable, BangPatterns, DeriveGeneric, DeriveAnyClass
+  build-depends:       base >=4.8 && <4.9, unbound >=0.4 && <0.5, transformers >=0.4 && <0.5, containers >=0.5 && <0.6, parsec >=3.1 && <3.2, pretty >=1.1 && <1.2, filepath >=1.4 && <1.5, process >=1.2 && <1.3, cmdargs >=0.10 && <0.11, ansi-terminal >=0.6 && <0.7, deepseq >=1.4 && <1.5, parallel >=3.2 && <3.3
+  hs-source-dirs:      .
+  default-language:    Haskell2010
