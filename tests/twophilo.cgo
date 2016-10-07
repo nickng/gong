@@ -1,0 +1,40 @@
+-- Should take about 2s
+def main.main():
+    let t0 = newchan ty, 0;
+    let t1 = newchan ty, 0;
+    spawn philo(t0,t1);
+    spawn philo(t1,t0);	
+    spawn aFork(t0);
+    spawn aFork(t1);
+
+def aFork(fork):
+    send fork;
+    recv fork;
+    call aFork(fork);
+ 
+
+def philo(left,right) :
+     select
+	case recv left;
+	     select
+		case recv right; 
+		     -- EAT
+		     send right;
+		     send left; 
+		     call philo(left,right);
+		case tau; 
+		     send left;
+		     call philo(left,right);
+	     endselect;
+	case recv right;
+	     select
+		case recv left;
+		     -- EAT
+		     send right;
+		     send left;
+		     call philo(left,right);
+		case tau;
+		     send right;
+		     call philo(left,right);
+             endselect;
+    endselect;

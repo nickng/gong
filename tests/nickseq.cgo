@@ -1,0 +1,15 @@
+def main.main():
+   let t0 = newchan main.main.t0_0_0, 10;
+   spawn main.worker(t0);
+   spawn main.worker(t0);
+   call main.main#3(t0);
+def main.main#3(t0):
+   if send t0; call main.main#3(t0); else close t0; endif;
+def main.worker(jobQueue):
+   call main.worker#1(jobQueue);
+def main.worker#1(jobQueue):
+select 
+   case recv jobQueue;
+   call main.worker#1(jobQueue);
+   case tau;
+   endselect

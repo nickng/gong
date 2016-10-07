@@ -1,0 +1,9 @@
+-- This example illustrates the use of asynchronous channels (bound > 0)
+--
+def t0() : let a = newchan ty, 1 ; 
+    	   let b = newchan ty, 1 ; 
+	   spawn t1(a,b);
+	   spawn t1(b,a);
+
+def t1(x,y): send x; recv y;
+	   

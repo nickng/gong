@@ -1,0 +1,14 @@
+def t0() : let a = newchan ty, 1 ; 
+           let b = newchan ty, 1;
+	   spawn w(a);
+	   spawn r(a,b);
+
+def r(x,y):   let c = newchan ty, 1;  -- test Name GC
+    	      close c;
+              recv x; 
+	      call r(x,c);
+
+	      
+def w(x): send x;
+          send x;
+     	  call w(x);

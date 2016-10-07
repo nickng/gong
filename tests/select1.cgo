@@ -1,0 +1,11 @@
+def t0() : let a = newchan ty, 0 ; 
+    	   let b = newchan ty, 0 ; 
+	   spawn t1(a,b);
+	   select 
+	   	  case send a; recv b;
+	   	  case send b; recv a;
+	   endselect;
+
+
+def t1(x,y): recv x; recv x;
+	   

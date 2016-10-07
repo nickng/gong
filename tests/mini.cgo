@@ -1,0 +1,9 @@
+-- NOT 2-LIVE (but 1-live)
+def t0() : let a = newchan ty, 0 ; 
+	   let b = newchan ty, 0 ; 
+	   spawn t1(b);
+	   recv b;
+	   recv a;
+
+
+def t1(x): send x;

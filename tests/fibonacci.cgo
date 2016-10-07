@@ -1,0 +1,15 @@
+def t0() : let a = newchan ty, 0 ; 
+	   spawn fib(a);
+	   recv a;
+
+def fib(x): if
+		send x;
+            else let b = newchan ty, 0 ; 
+                 let c = newchan ty, 0 ; 
+		 spawn fib(b);
+ 		 spawn fib(c);
+		 spawn wait(b,c,x);
+	    endif;
+
+
+def wait(x,y,z): recv x; recv y; send z;

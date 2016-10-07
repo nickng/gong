@@ -1,0 +1,8 @@
+def t0() : let a = newchan ty, 0 ; 
+
+	   spawn r(a);
+    	   close a;
+
+def r(x):  recv x; 
+	   call r(x);
+

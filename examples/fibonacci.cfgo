@@ -1,0 +1,16 @@
+-- This is the Fibonacci example (Section 4.2.2)
+-- it is live and safe
+-- and should take about 10s to be checked
+--
+def t0() : let a = newchan ty, 0 ; 
+	   spawn fib(a);
+	   recv a;
+
+def fib(x): if
+		send x;
+            else let b = newchan ty, 0 ; 
+		 spawn fib(b);
+ 		 spawn fib(b);
+		 recv b; recv b; send x;
+	    endif;
+

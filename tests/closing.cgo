@@ -1,0 +1,8 @@
+def t0() : let a = newchan ty, 0 ; 
+    	   close a;
+	   if 
+	      recv a;
+	   else
+	      tau; 
+	      -- close a;
+	   endif;

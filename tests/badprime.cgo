@@ -1,0 +1,27 @@
+def t0() : let a = newchan ty, 0 ; 
+	   spawn g(a);
+	   spawn r(a);
+
+def r(x): recv x; 
+    	  let b = newchan ty, 0;
+	  spawn f(x,b);
+	  spawn r(b);
+
+def f(x,y): recv x; send y;
+    	    recv x; send y;
+	    recv x; send y;
+            recv x; send y; -- 2-live but not 3-live
+	    -- -- 
+	    -- recv x; send y;
+    	    -- recv x; send y;
+	    -- recv x; send y;
+            -- recv x; send y; -- 4-live but not 5-live
+	    
+	    -- recv x; send y;
+    	    -- recv x; send y;
+	    -- recv x; send y;
+            -- recv x; send y; -- 5-live
+
+
+def g(x): send x;
+     	  call g(x);

@@ -1,0 +1,18 @@
+-- This is an example of Go type that is NOT fenced (see Section 4.2.2)
+-- the tool rejects it as "not fenced"
+--
+def t0() : let a = newchan ty, 0 ; 
+	   spawn t1(a)
+
+def t1(x): recv x; 
+    	  let b = newchan ty, 0;
+	  spawn w(x);
+	  spawn r(x);
+	  spawn t1(x);			-- or "call t1(x);"
+
+
+def w(x): send x;
+    	  call r(x);
+
+def r(x): recv x;
+     	  call r(x);

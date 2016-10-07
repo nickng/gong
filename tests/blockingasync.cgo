@@ -1,0 +1,14 @@
+def t0() : let a = newchan ty, 2 ; 
+    	   let b = newchan ty, 2 ; 
+	   spawn one(b,a);
+	   spawn two(a);
+	   spawn three(b);
+
+
+
+def one(x,y): recv x; recv x; send y;
+	   
+
+def two(x): recv x;
+
+def three(x): send x; send x;

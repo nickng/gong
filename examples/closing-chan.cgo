@@ -1,0 +1,11 @@
+-- This example illustrates synchronisation with a closed channel
+-- it is live and safe.
+--
+def t0() : let a = newchan ty, 0 ; 
+    	   close a;
+	   if 
+	      recv a;
+	   else
+	      tau; 
+	      -- close a; -- if uncommented this example is NOT safe
+	   endif;

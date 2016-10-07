@@ -1,0 +1,22 @@
+-- This is the prime sieve example (Section 1, page 2)
+-- it is live and safe
+-- and should take 
+def t0() : let a = newchan ty, 0 ; 
+	   spawn g(a);
+	   spawn r(a);
+
+def r(x): recv x; 
+    	  let b = newchan ty, 0;
+	  spawn f(x,b);
+	  spawn r(b);
+
+def f(x,y): recv x;
+    	    if
+	      	    send y;
+		    call f(x,y);
+	    else
+		    call f(x,y);
+	    endif;
+	      
+def g(x): send x;
+     	  call g(x);
