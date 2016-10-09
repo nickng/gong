@@ -491,7 +491,7 @@ checkFiniteP debug (EqnSys bnd) = do
              let defEnv = unrec defs
              b <- foldM (\acc (x,Embed(ChanAbst bnd))  -> do
                               (l,t) <- unbind bnd
-                              b <- checkFinite debug defEnv (S.empty) l [] x t
+                              b <- if null l then return True else checkFinite debug defEnv (S.empty) l [] x t
                               return $ (acc && b)) True defEnv
              b' <- checkFinite debug defEnv (S.empty) [] [] (s2n "main") main
              return $ (b && b')
