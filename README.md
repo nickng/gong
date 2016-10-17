@@ -1,4 +1,4 @@
-# Gong [![Build Status](https://travis-ci.org/nickng/gong.svg?branch=master)](https://travis-ci.org/nickng/gong)
+# Gong [![Build Status](https://travis-ci.org/nickng/gong.svg?branch=master)](https://travis-ci.org/nickng/gong) [![Docker Hub](https://img.shields.io/badge/docker-ready-blue.svg)](https://hub.docker.com/r/nickng/gong/)
 
 ## Liveness and Safety checker for MiGo types
 
@@ -53,3 +53,10 @@ To see all options available, use the `--help` flag.
     $ Gong --help
 
 Some further example `.migo` files are available under the `examples/` directory.
+
+## Docker
+
+A Docker image is available for testing
+
+    $ docker run nickng/gong:popl17ae Gong -A path/to/file.migo
+
