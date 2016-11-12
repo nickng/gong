@@ -131,7 +131,6 @@ match :: GoType -> GoType -> Bool
 match ((Send c1 _)) ((Recv c2 _)) =  c1 == c2 
 match ((Recv c2 _)) ((Send c1 _)) =  c1 == c2
 match ((Close c _)) ((ClosedBuffer c')) = c == c'
-match ((Recv c1 _)) ((ClosedBuffer c2)) =  c1 == c2
 match _ _ = False
 
 
