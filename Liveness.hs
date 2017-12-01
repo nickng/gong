@@ -54,6 +54,11 @@ matchTypes current candidate =
 
 findMatch :: GoType -> [GoType] -> Bool
 findMatch _ [] = False
+findMatch t@(OChoice ys) (x:xs) = if any isTau ys
+                                  then True
+                                  else (matchTypes t x)
+                                       ||
+                                       (findMatch t xs)
 findMatch current (x:xs) = (matchTypes current x)
                            ||
                            (findMatch current xs)
