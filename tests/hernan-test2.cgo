@@ -1,0 +1,13 @@
+def main.main():
+    let t1 = newchan main.main.t1_0_0, 0;
+    let t3 = newchan main.main.t3_0_0, 0;
+    spawn main.main$1(t1,t3);
+    select
+      case recv t1;
+      case tau;recv t3;
+    endselect;
+def main.main$1(t1,t3):
+    select
+      case send t1;
+      case tau;send t3;
+    endselect;
