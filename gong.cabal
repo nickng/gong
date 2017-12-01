@@ -1,5 +1,5 @@
 name:                Gong
-version:             0.1.0.0
+version:             0.1.1.0
 synopsis:            Gong liveness and safety checker
 description:         Gong liveness and safety checker for MiGo types.
 license:             Apache-2.0
